@@ -1,0 +1,6 @@
+{
+  "name": "TheElementals",
+  "description": "TheElementals app for the enviroment",
+  "repository": "https://github.com/robertogs2/studious-system",
+  "keywords": ["node", "express", "heroku"]
+}

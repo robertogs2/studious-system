@@ -1,0 +1,39 @@
+heroku login
+
+git clone https://github.com/heroku/node-js-getting-started.git
+cd node-js-getting-started
+
+heroku create
+git push heroku master
+heroku ps:scale web=1
+heroku open
+
+heroku logs --tail
+
+web: node index.js
+
+heroku ps
+heroku ps:scale web=0
+heroku ps:scale web=1
+
+npm init --yes
+npm install
+
+heroku local web
+http://localhost:5000
+
+npm install cool-ascii-faces
+
+npm install
+heroku local
+
+git add .
+git commit -m "Add cool face API"
+git push heroku master
+heroku open cool
+
+heroku addons:create papertrail
+heroku addons
+heroku addons:open papertrail
+
+heroku run bash
