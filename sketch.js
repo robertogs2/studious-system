@@ -72,7 +72,8 @@ function main() {
     window.localStorage.setItem("point" + String(amount_points),s);
     amount_points++;
 
-    L.marker([lat, lng]).addTo(map);
+    L.marker([lat, lng]).addTo(map).bindPopup("<b>Juan Peréz</b><br>Tengo 3 semanas sin agua y el pozo que abastece a mi familia se ha secado");
+
   });
 }
 main();
