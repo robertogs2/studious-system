@@ -1,9 +1,9 @@
-var mappa = new Mappa('Leaflet');
+//var mappa = new Mappa('Leaflet');
 
 let position = 0;
 let amount_points = 0;
-let current_x = 0;
-let current_y = 0;
+let current_lat = 0;
+let current_lng = 0;
 const options = {
   lat: 9.4,
   lng: -83.80,
@@ -11,7 +11,7 @@ const options = {
   style: "http://{s}.tile.osm.org/{z}/{x}/{y}.png"
 }
 
-function setup() {
+function main() {
   // trainMap = L.map('map');//mappa.tileMap(options);
   // trainMap.overlay(canvas);
   // var w = window.innerWidth;
@@ -41,19 +41,41 @@ function setup() {
 
   var control = L.control.layers(null, null, { collapsed:false }).addTo(map);
 
+
+
   for (var key in window.localStorage) {
     //console.log(key);
     if (key.startsWith("point")){
+      console.log(key);
       amount_points++;
-      let stored = JSON.parse(localStorage.getItem(key));
+      let stored = JSON.parse(window.localStorage.getItem(key));
       //let pixel = trainMap.latLngToPixel(stored.lat, stored.lng);
       //ellipse(pixel.x, pixel.y, stored.S1, stored.S2);
       //fill(255);
       L.marker([stored.lat, stored.lng]).addTo(map);
     }
   }
+
   console.log(amount_points);
+
+  map.on('click',function(e){
+    //clear();
+    console.log("mouseReleased");
+    //let position = trainMap.pixelToLatLng(mouseX, mouseY);
+    var coord = e.latlng.toString().split(',');
+    var lat = coord[0].split('(')[1];
+    console.log(coord);
+    var lng = coord[1].split(')')[0];
+    //puntos[i] = position;
+    s =  String(JSON.stringify({lat: lat, lng: lng, S1: 10, S2: 10}));
+    console.log(s);
+    window.localStorage.setItem("point" + String(amount_points),s);
+    amount_points++;
+
+    L.marker([lat, lng]).addTo(map);
+  });
 }
+main();
 
 // function draw() {
 //   if (mouseIsPressed) {
@@ -73,20 +95,6 @@ function setup() {
 //   var lng = coord[1].split(')');
 //   current_x = lat;
 //   current_y = lng;
-// });
-
-// map.on('dblclick',function(e){
-//     //clear();
-//     console.log("mouseReleased");
-//     //let position = trainMap.pixelToLatLng(mouseX, mouseY);
-//     var coord = e.latlng.toString().split(',');
-//     var lat = coord[0].split('(');
-//     var lng = coord[1].split(')');
-//     //puntos[i] = position;
-//     s =  String(JSON.stringify({lat: lat, lng: lng, S1: 10, S2: 10}));
-//     console.log(s);
-//     window.localStorage.setItem("point" + String(amount_points),s);
-//     amount_points++;
 // });
 
 // function draw() {
