@@ -58,6 +58,14 @@ function main() {
 
   console.log(amount_points);
 
+    var logo = L.control({position: 'topleft'});
+    logo.onAdd = function(map){
+        var div = L.DomUtil.create('div', 'myclass');
+        div.innerHTML= "<img src='buttons.png' style=\"height:50%;width:100%;\"/>";
+        return div;
+    }
+    logo.addTo(map);
+
   map.on('click',function(e){
     //clear();
     console.log("mouseReleased");
