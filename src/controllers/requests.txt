@@ -1,0 +1,6 @@
+/api/
+/api/test
+/api/queries
+/api/email
+/api/data
+

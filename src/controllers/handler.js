@@ -12,3 +12,6 @@ router.use('/queries',queries);
 
 let email = require('./email');
 router.use('/email', email);
+
+let data = require('./data');
+router.use('/data', data);

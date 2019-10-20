@@ -8,8 +8,8 @@ let expose = {
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'aramtecc@gmail.com',
-        pass: '2486abc!'
+        user: 'theelementals2019@gmail.com',
+        pass: 'avatar2019'
     }
 });
 
